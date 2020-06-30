@@ -7,20 +7,18 @@ import NavLeft from './components/NavLeft';
 export default class Admin extends React.Component {
     render(){
         return (
-            <div>
-                <Row>
-                    <Col span='3'>
-                        <NavLeft></NavLeft>
-                    </Col>
-                    <Col span='21'> 
-                            <Herder></Herder>
-                            <Col>
-                                content
-                            </Col>
-                            <Footer></Footer>
-                    </Col>
-                </Row>
-            </div>
+            <Row className='container'>
+                <Col span='4'>
+                    <NavLeft></NavLeft>
+                </Col>
+                <Col span='20'> 
+                        <Herder></Herder>
+                        <Col className='content'>
+                            {this.props.children}
+                        </Col>
+                        <Footer></Footer>
+                </Col>
+            </Row>
         )
     }
 }

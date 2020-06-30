@@ -15,7 +15,7 @@ export default class  NavLeft extends React.Component {
                     <img src='' alt=''></img>
                     <h1>Imooc MS</h1>
                 </div>
-                <Menu onClick={this.handleClick} style={{ width: 256 }} mode="vertical">
+                <Menu onClick={this.handleClick}  mode="vertical">
                     <SubMenu key="sub1" icon={<MailOutlined />} title="Navigation One">
                     <Menu.ItemGroup title="Item 1">
                         <Menu.Item key="1">Option 1</Menu.Item>
