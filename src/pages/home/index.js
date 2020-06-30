@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-
+import './index.less'
 class App extends Component {
   render() {
     return (
-      <div className='c-FEA95E'>
+      <div className='home-warp'>
           这是home页面
       </div>
     );
