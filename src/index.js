@@ -6,11 +6,18 @@ import './style/APP.styl'
 // import App from './App';
 import * as serviceWorker from './serviceWorker';
 import Router from './router'
+import {Provider} from 'react-redux';
+import configureStore from './redux/store/configureStore';
 
+const store =  configureStore
 ReactDOM.render(
-  <React.StrictMode>
-    <Router />
-  </React.StrictMode>,
+  //StrictMode严格模式
+  // <React.StrictMode>
+  //   <Router />
+  // </React.StrictMode>,
+  <Provider>
+    <Router store={store}/>
+  </Provider>,
   document.getElementById('root')
 );
 
