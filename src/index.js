@@ -9,14 +9,14 @@ import Router from './router'
 import {Provider} from 'react-redux';
 import configureStore from './redux/store/configureStore';
 
-const store =  configureStore
+const store =  configureStore()
 ReactDOM.render(
   //StrictMode严格模式
   // <React.StrictMode>
   //   <Router />
   // </React.StrictMode>,
-  <Provider>
-    <Router store={store}/>
+  <Provider store={store}>
+    <Router />
   </Provider>,
   document.getElementById('root')
 );

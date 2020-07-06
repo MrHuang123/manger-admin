@@ -2,10 +2,19 @@ import React from 'react';
 import MenuConfig from '../../config/menuConfig';
 import './index.less'
 import { Menu } from 'antd';
-import { MailOutlined, AppstoreOutlined, SettingOutlined } from '@ant-design/icons';
+// import { MailOutlined, AppstoreOutlined, SettingOutlined } from '@ant-design/icons';
+import { NavLink } from 'react-router-dom';
+import {connect} from 'react-redux';
+import {switchMenu} from '../../redux/action'
 
 const { SubMenu } = Menu;
-export default class  NavLeft extends React.Component {
+class  NavLeft extends React.Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            currentKey: ''
+        }
+    }
     componentWillMount(){
         const menuTreeNode = this.renderMenu(MenuConfig);
         this.setState({
@@ -23,11 +32,21 @@ export default class  NavLeft extends React.Component {
                 )
                 // return this.renderMenu(item.children)
             }
-        return <Menu.Item title={item.title} key={item.key}>{item.title}</Menu.Item>
+        return <Menu.Item title={item.title} key={item.key}>
+                    <NavLink to={item.key}>{item.title}</NavLink>
+               </Menu.Item>
         })
     }
-    handleClick = ()=>{
-        console.log(1111)
+    handleClick = ({ item, key })=>{
+        // console.log(item.key,item.item.props.title)
+        if(key === this.state.currentKey) return
+        // 事件派发，自动调用reducer，通过reducer保存到store对象中
+        console.log(this.props)
+        const { dispatch } = this.props;
+        dispatch(switchMenu(item.props.title));
+        // this.setState({
+        //     currentKey: key
+        // });
     }
     render(){
         return (
@@ -43,3 +62,5 @@ export default class  NavLeft extends React.Component {
         )
     }
 }
+
+export default connect()(NavLeft)

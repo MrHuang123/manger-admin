@@ -32,7 +32,7 @@ export default class  Header extends React.Component {
             url:'http://api.map.baidu.com/telematics/v3/weather?location='+encodeURIComponent(city)+'&output=json&ak=3p49MVra6urFRGOT9s8UBWr2'
         }).then((res)=>{
             console.log(res)
-            if(res.status == 'success'){
+            if(res.status === 'success'){
                 let data = res.results[0].weather_data[0];
                 this.setState({
                     dayPictureUrl:data.dayPictureUrl,
@@ -57,7 +57,7 @@ export default class  Header extends React.Component {
                     <Col span='20' className='weather'>
                         <span className='time'>{this.state.sysTime}</span>
                         <span className='weather-img'>
-                            <img  src={this.state.dayPictureUrl}></img>
+                            <img  src={this.state.dayPictureUrl} />
                         </span>
                         <span>{this.state.weather}</span>
                     </Col>
