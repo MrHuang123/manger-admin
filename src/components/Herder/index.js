@@ -2,8 +2,9 @@ import React from 'react';
 import { Row,Col } from "antd"
 import axios from '../../axios'
 import Util from '../../utils/utils'
+import {connect} from 'react-redux'
 import './index.less'
-export default class  Header extends React.Component {
+class Header extends React.Component {
     constructor(props){
         super(props);
         this.state = {
@@ -52,7 +53,7 @@ export default class  Header extends React.Component {
                 </Row>
                 <Row className='breadcremb'>
                     <Col span='4' className='breadcremb-title'>
-                        首页
+                        {this.props.menuName}
                     </Col>
                     <Col span='20' className='weather'>
                         <span className='time'>{this.state.sysTime}</span>
@@ -66,3 +67,9 @@ export default class  Header extends React.Component {
         )
     }
 }
+const mapStateToProps = (state)=>{
+    return {
+        menuName: state.menuName,
+    }
+}
+export default connect(mapStateToProps)(Header)
